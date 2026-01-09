@@ -204,7 +204,10 @@ function openModal(id) {
 
     // --- 4.1 CONSTRÓI A FICHA TÉCNICA ---
     if (modalDetailsContainer) {
-        const msg = `Olá Nadia! Amei o bolo *${data.titulo}* e gostaria de saber a disponibilidade.`;
+        // AQUI: Mudei para dizer "Vi no site"
+        const msg = `Olá Nadia! Vi no site o bolo *${data.titulo}* e gostaria de saber a disponibilidade.`;
+
+        // O resto do código continua igual, mantendo o visual do botão:
         const zapLink = `https://wa.me/5551999973725?text=${encodeURIComponent(msg)}`;
 
         modalDetailsContainer.innerHTML = `
