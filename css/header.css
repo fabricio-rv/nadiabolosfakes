@@ -168,20 +168,14 @@ header {
 @media (max-width: 992px) {
     .header-actions {
         gap: 10px !important;
-        /* Era 15px. Isso "cola" os botões na direita */
         margin-left: auto;
-        /* Garante que fiquem empurrados para o canto */
     }
 
     /* --- BOTÃO TEMA (Aumentado) --- */
     .theme-btn {
         width: 35px;
-        /* Aumentei a caixinha (era 30 ou 32) */
         height: 35px;
         font-size: 1.0rem;
-        /* Aumentei o ícone da lua */
-
-        /* Garante que o ícone fique bem no centro */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -191,36 +185,34 @@ header {
 
 @media (max-width: 768px) {
 
-    /* --- BOTÃO ORÇAMENTO COMPACTO (MUDANÇA AQUI) --- */
-    /* Substitui o antigo ".desktop-cta { display: none; }" */
+    /* --- BOTÃO ORÇAMENTO (MANTIDO) --- */
     .header-cta.desktop-cta {
         display: flex !important;
-        /* Obriga a aparecer */
         padding: 9px 14px !important;
-        /* Tira o excesso de borda verde (era 12px 25px) */
         font-size: 1.0rem !important;
-        /* Texto levemente menor */
         gap: 5px !important;
-        /* Cola o ícone do Whats no texto */
         margin-left: 0 !important;
         border-radius: 50px;
         white-space: nowrap;
-        /* Garante que fique numa linha só */
     }
 
-    /* --- ÍCONE HAMBÚRGUER (Visível no Mobile) --- */
+    /* --- ÍCONE HAMBÚRGUER (CORRIGIDO) --- */
     .hamburger {
         display: block !important;
+
+        /* VOLTEI PARA RELATIVE: Isso impede que ele role com a tela fechado */
+        /* E garante que o gap (espaçamento) funcione */
         position: relative;
-        z-index: 2000;
+
+        /* Margem de segurança caso o gap do pai não pegue */
+        margin-left: 3px;
+
+        z-index: 2002;
         font-size: 1.8rem;
         color: var(--color-text-main);
-
-        /* O SEGREDINHO: Puxa ele mais pra direita (perto da borda) */
-        /* para liberar espaço para o logo no meio */
-        margin-right: -10px;
     }
 
+    /* --- MENU LATERAL (SIDEBAR) --- */
     .nav-links {
         position: fixed;
         top: 0;
@@ -228,23 +220,29 @@ header {
         height: 100vh;
         width: 45%;
         max-width: 245px;
-        background-color: rgba(248, 249, 250, 0.92);
+
+        background-color: rgba(248, 249, 250, 0.95);
         backdrop-filter: blur(12px);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+
         display: flex;
         flex-direction: column;
+
+        /* Alinhamento da coluna */
         align-items: center;
-        justify-content: center;
-        gap: 45px;
-        padding: 45px 0;
+        justify-content: flex-start;
+        padding-top: 90px;
+
+        gap: 0;
         margin-left: 0;
         transform: translateX(100%);
         transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
         z-index: 1500;
     }
 
+    /* Dark Mode */
     [data-theme="dark"] .nav-links {
-        background-color: rgba(18, 18, 18, 0.92);
+        background-color: rgba(18, 18, 18, 0.95);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
     }
 
@@ -252,37 +250,47 @@ header {
         transform: translateX(0%);
     }
 
+    /* ESTILO DAS LINHAS E ITENS (CORRIGIDO PARA CENTRALIZAR) */
+    .nav-links li {
+        width: 85%;
+
+        /* IMPORTANTE: Display block anula o flex do desktop que puxava pra esquerda */
+        display: block;
+        text-align: center;
+        /* Agora isso vai funcionar */
+
+        padding: 0;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.6);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
     .nav-links li:not(:last-child)::after {
         display: none;
     }
 
-    .nav-links li {
-        padding: 0;
-    }
-
     .nav-links a {
+        display: block;
+        /* Garante que o link ocupe a largura toda */
+        text-align: center;
+        /* Reforço da centralização */
+        padding: 22px 0;
         font-size: 1.1rem;
         font-weight: 500;
         letter-spacing: 2px;
+        color: var(--color-text-main);
     }
 
     .nav-links a::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 1px;
-        background: var(--color-accent-gold);
-        transition: width 0.3s;
-        margin: 5px auto 0;
+        display: none;
     }
 
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-
+    /* --- BOTÃO EXTRA MOBILE --- */
     .mobile-orcamento {
         display: block;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     .mobile-orcamento a {
