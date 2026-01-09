@@ -24,6 +24,74 @@
     margin-bottom: 40px;
 }
 
+/* --- SUB-FILTROS (COM/SEM MOVIMENTO) --- */
+.sub-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    /* Espaço antes das fotos */
+    flex-wrap: wrap;
+}
+
+.sub-filter-label {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.sub-filter-btn {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    /* Borda bem suave */
+    color: var(--color-text-light);
+    padding: 6px 16px;
+    /* Menor que o botão principal */
+    border-radius: 6px;
+    /* Mais quadrado que o principal */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sub-filter-btn i {
+    font-size: 0.8rem;
+}
+
+/* Estado Ativo e Hover */
+.sub-filter-btn:hover {
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+}
+
+.sub-filter-btn.active {
+    background-color: rgba(212, 175, 55, 0.1);
+    /* Dourado bem clarinho no fundo */
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+    font-weight: 700;
+}
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    .sub-filters {
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .sub-filter-label {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
 .filter-btn {
     background: transparent;
     border: 1px solid #ddd;

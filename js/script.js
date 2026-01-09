@@ -68,12 +68,44 @@ function initGallery() {
     renderGallery(false);
 }
 
-/* --- 3. FILTRAGEM --- */
+/* --- 2. GERAÇÃO DINÂMICA DA GALERIA --- */
+function initGallery() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid || typeof dadosBolos === 'undefined') return;
+
+    galleryGrid.innerHTML = dadosBolos.map(bolo => {
+        // TRUQUE DO MESTRE: Se não tiver tipo definido, assume que é 'foto'
+        const tipoItem = bolo.tipo === 'video' ? 'video' : 'foto';
+
+        const mediaHtml = bolo.tipo === 'video'
+            ? `<video src="${bolo.videoSrc}" poster="${bolo.imagemPrincipal}" muted loop playsinline></video>
+               <div class="motion-badge"><i class="fas fa-play"></i> Com Movimento</div>`
+            : `<img src="${bolo.imagemPrincipal}" alt="${bolo.titulo}">`;
+
+        // Note que agora usamos ${tipoItem} no data-type
+        return `
+            <div class="gallery-item" data-category="${bolo.categoria}" data-type="${tipoItem}" onclick="openModal('${bolo.id}')">
+                ${mediaHtml}
+                <div class="gallery-overlay">
+                    <h3>${bolo.titulo}</h3>
+                    <p>${bolo.subtitulo.split('•')[1] || 'Exclusivo'}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    renderGallery(false);
+}
+
+/* --- 3. FILTRAGEM (ATUALIZADO PARA FILTRO DUPLO) --- */
 const filterBtns = document.querySelectorAll('.filter-btn');
+const subFilterBtns = document.querySelectorAll('.sub-filter-btn'); // Novos botões
 const viewAllBtn = document.getElementById('viewAllBtn');
 const viewLessBtn = document.getElementById('viewLessBtn');
-const emptyState = document.getElementById('emptyState'); // Seleciona a div de aviso
+const emptyState = document.getElementById('emptyState');
+
 let currentCategory = 'all';
+let currentType = 'all'; // Nova variável para controlar o tipo (foto/video/all)
 const itemsLimit = 6;
 
 function renderGallery(showAll) {
@@ -81,12 +113,16 @@ function renderGallery(showAll) {
     let visibleCount = 0;
     let totalMatching = 0;
 
-    // 1. Loop para contar e exibir itens
     galleryItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
-        const matches = (currentCategory === 'all' || itemCategory === currentCategory);
+        const itemType = item.getAttribute('data-type'); // Lê se é 'foto' ou 'video'
 
-        if (matches) {
+        // A MÁGICA: Verifica se bate com a Categoria E com o Tipo ao mesmo tempo
+        const matchesCategory = (currentCategory === 'all' || itemCategory === currentCategory);
+        const matchesType = (currentType === 'all' || itemType === currentType);
+
+        // Só mostra se passar nos DOIS testes
+        if (matchesCategory && matchesType) {
             totalMatching++;
             if (showAll || visibleCount < itemsLimit) {
                 item.style.display = 'block';
@@ -99,15 +135,14 @@ function renderGallery(showAll) {
         }
     });
 
-    // 2. Lógica do Empty State (AQUI ESTÁ A MÁGICA)
+    // Lógica do Empty State (Sem resultados)
     if (totalMatching === 0) {
-        if (emptyState) emptyState.style.display = 'block'; // Mostra msg
-        if (viewAllBtn) viewAllBtn.style.display = 'none';  // Esconde botões
+        if (emptyState) emptyState.style.display = 'block';
+        if (viewAllBtn) viewAllBtn.style.display = 'none';
         if (viewLessBtn) viewLessBtn.style.display = 'none';
     } else {
-        if (emptyState) emptyState.style.display = 'none'; // Esconde msg
+        if (emptyState) emptyState.style.display = 'none';
 
-        // 3. Controle dos botões Ver Mais / Menos (Só roda se tiver itens)
         if (viewAllBtn && viewLessBtn) {
             if (totalMatching <= itemsLimit) {
                 viewAllBtn.style.display = 'none';
@@ -125,11 +160,22 @@ function renderGallery(showAll) {
     }
 }
 
+// Eventos dos Botões de Categoria (Grandes)
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentCategory = btn.getAttribute('data-filter');
+        renderGallery(false);
+    });
+});
+
+// Eventos dos Botões de Tipo (Pequenos - Com/Sem Movimento)
+subFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        subFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentType = btn.getAttribute('data-type'); // Atualiza a variável de tipo
         renderGallery(false);
     });
 });

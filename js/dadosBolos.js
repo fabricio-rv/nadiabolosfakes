@@ -604,13 +604,12 @@ const dadosBolos = [
     {
         id: 'meninas61',
         categoria: 'infantilf',
-        tipo: 'video',
+        tipo: 'foto',
         titulo: 'Casinha de Bonecas',
-        subtitulo: 'Infantil Meninas • Com Movimento',
-        videoSrc: 'imagens/videos/meninas61.mp4',
+        subtitulo: 'Infantil Meninas',
         imagemPrincipal: 'imagens/infantil meninas/meninas61.jpg',
         detalhes: { altura: 'Padrão', acabamento: 'Lúdico', diferencial: 'Cenário Vivo' },
-        descricao: 'Mais que um bolo, um cenário vivo. O movimento traz a casinha de bonecas para a realidade da festa.'
+        descricao: 'Mais que um bolo, um cenário vivo. Uma casinha de bonecas repleta de detalhes encantadores.'
     },
     {
         id: 'meninas62',
