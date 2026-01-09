@@ -173,8 +173,8 @@ header {
 
     /* --- BOTÃO TEMA (Aumentado) --- */
     .theme-btn {
-        width: 32px;
-        height: 32px;
+        width: 31px;
+        height: 31px;
         font-size: 0.9rem;
         display: flex;
         align-items: center;
