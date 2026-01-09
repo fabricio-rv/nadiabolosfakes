@@ -173,9 +173,9 @@ header {
 
     /* --- BOTÃO TEMA (Aumentado) --- */
     .theme-btn {
-        width: 33px;
-        height: 33px;
-        font-size: 1.0rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -189,7 +189,7 @@ header {
     .header-cta.desktop-cta {
         display: flex !important;
         padding: 6px 11px !important;
-        font-size: 1.0rem !important;
+        font-size: 0.95rem !important;
         gap: 5px !important;
         margin-left: 0 !important;
         border-radius: 50px;
