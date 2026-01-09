@@ -1,0 +1,135 @@
+/* --- FOOTER --- */
+footer {
+    background-color: var(--color-bg-footer);
+    color: var(--color-text-footer);
+    padding: 60px 0 40px;
+    font-size: 0.95rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 100px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--color-footer-border);
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.footer-col h4 {
+    color: var(--color-accent-gold);
+    margin-bottom: 20px;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-col h4::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--color-accent-gold);
+    margin: 8px auto 0;
+}
+
+.footer-col p,
+.footer-col a {
+    margin-bottom: 12px;
+    color: var(--color-text-footer) !important;
+    opacity: 0.9;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    color: var(--color-accent-gold) !important;
+    opacity: 1;
+}
+
+/* Ícones Sociais Footer */
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    text-decoration: none;
+    border: none;
+    opacity: 1 !important;
+}
+
+/* Cores das marcas */
+.social-icons a[aria-label="Instagram"] {
+    background-color: #ffffff !important;
+    color: #E1306C !important;
+}
+
+.social-icons a[aria-label="Facebook"] {
+    background-color: #ffffff !important;
+    color: #1877F2 !important;
+}
+
+.social-icons a[aria-label="WhatsApp"] {
+    background-color: #ffffff !important;
+    color: #25D366 !important;
+}
+
+.social-icons a:hover {
+    background-color: var(--color-accent-gold) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px);
+}
+
+/* Dark Mode Social Icons adjustment */
+[data-theme="dark"] .social-icons a[aria-label="Instagram"],
+[data-theme="dark"] .social-icons a[aria-label="Facebook"],
+[data-theme="dark"] .social-icons a[aria-label="WhatsApp"] {
+    background-color: #252525 !important;
+}
+
+/* Créditos */
+.dev-credit {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-footer);
+    opacity: 0.6;
+    margin-top: 40px;
+    display: block;
+}
+
+.dev-credit a {
+    color: var(--color-text-footer);
+    text-decoration: none;
+    border: none;
+    font-weight: 700;
+}
+
+.dev-credit a:hover {
+    color: var(--color-accent-gold);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        text-align: center;
+        gap: 50px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}

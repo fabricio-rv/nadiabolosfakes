@@ -1,0 +1,231 @@
+/* --- GALERIA DE BOLOS (AJUSTE FINO DE POSIÇÃO) --- */
+#gallery {
+    background-color: var(--color-bg-white);
+    /* 1. Isso SOBE o Título para perto da foto de capa (diminui o teto) */
+    padding-top: 60px !important;
+}
+
+/* 2. Isso EMPURRA as categorias para BAIXO (afasta elas da linha amarela) */
+#gallery .section-title {
+    margin-bottom: 20px !important;
+    /* Aumentei o espaço embaixo do título */
+}
+
+/* 3. Isso puxa a linha amarela para ficar pertinho do texto do título */
+#gallery .section-title::after {
+    margin-top: 20px !important;
+}
+
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: var(--color-text-main);
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--color-accent-gold);
+    border-color: var(--color-accent-gold);
+    color: white;
+}
+
+/* Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 780px;
+    /* Altura fixa no Desktop */
+    background-color: var(--color-bg-card);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.05);
+}
+
+/* Badge de Vídeo (Motion) */
+.motion-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 5;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 5;
+}
+
+.gallery-overlay h3,
+.gallery-overlay p {
+    color: white !important;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--color-bg-card);
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px dashed var(--color-accent-gold);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-text-main);
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Controles de visualização (Ver Todos) */
+.view-all-container {
+    text-align: center;
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+}
+
+#viewAllBtn {
+    display: none;
+}
+
+/* CTA Persistente */
+.persistent-cta {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    padding-top: 35px;
+}
+
+[data-theme="dark"] .persistent-cta {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.persistent-cta p {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-text-main);
+    margin-bottom: 35px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.persistent-cta p strong {
+    color: var(--color-accent-gold);
+}
+
+/* --- GALERIA RESPONSIVA (MOBILE - CORREÇÃO VÍDEO DEFINITIVA) --- */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .gallery-item {
+        /* Altura automática e sem fundo cinza */
+        height: auto !important;
+        min-height: 0 !important;
+        background-color: transparent !important;
+
+        /* TRUQUE: Mata espaços em branco fantasmas embaixo do vídeo */
+        line-height: 0 !important;
+        font-size: 0 !important;
+
+        margin-bottom: 15px;
+        border: none;
+        display: block;
+    }
+
+    /* Regras para Imagem E Vídeo */
+    .gallery-item img,
+    .gallery-item video {
+        width: 100% !important;
+        height: auto !important;
+
+        /* Remove qualquer margem padrão do navegador */
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: block !important;
+        object-fit: cover !important;
+
+        /* O Segredo: cola o vídeo no fundo para não sobrar cinza */
+        vertical-align: bottom !important;
+    }
+}
