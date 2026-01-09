@@ -211,11 +211,11 @@ function openModal(id) {
     currentBoloSlides = [];
     const isDesktop = window.innerWidth > 768;
 
-    // 1. IMAGEM
-    currentBoloSlides.push({ type: 'image', src: data.imagemPrincipal }); // Fitted (Padrão)
+    // 1. IMAGEM (Invertido: Detail primeiro, depois Fitted)
     if (isDesktop) {
-        currentBoloSlides.push({ type: 'image-detail', src: data.imagemPrincipal }); // Scroll (Detalhe)
+        currentBoloSlides.push({ type: 'image-detail', src: data.imagemPrincipal }); // 1º Detail (Rola a tela)
     }
+    currentBoloSlides.push({ type: 'image', src: data.imagemPrincipal }); // 2º Fitted (Trava a tela)
 
     // 2. EXTRAS
     if (data.imagensExtras && data.imagensExtras.length > 0) {
@@ -225,16 +225,16 @@ function openModal(id) {
     // 3. VÍDEO
     if (data.tipo === 'video' && data.videoSrc) {
         if (isDesktop) {
-            // 1. O Vídeo "Fitted" (Precisa desse nome para travar na tela)
+            // 1. O Vídeo "Detail" (PRIMEIRO agora)
             currentBoloSlides.push({
-                type: 'video-fitted', // <--- Mudei aqui de volta
+                type: 'video-detail',
                 src: data.videoSrc,
                 poster: data.imagemPrincipal
             });
 
-            // 2. O Vídeo "Detail" (Precisa desse nome para rolar a página)
+            // 2. O Vídeo "Fitted" (DEPOIS agora)
             currentBoloSlides.push({
-                type: 'video-detail', // <--- Mudei aqui de volta
+                type: 'video-fitted',
                 src: data.videoSrc,
                 poster: data.imagemPrincipal
             });
