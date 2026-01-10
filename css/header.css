@@ -215,7 +215,7 @@ header {
         flex-shrink: 0 !important;
 
         /* Espaço fixo e seguro entre a Lua e o Hambúrguer */
-        gap: 60px !important;
+        gap: 40px !important;
 
         /* Distância da borda direita da tela (para não ficar colado) */
         padding-right: 20px !important;
