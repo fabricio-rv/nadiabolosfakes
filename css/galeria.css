@@ -297,3 +297,69 @@
         vertical-align: bottom !important;
     }
 }
+
+/* --- NOVOS FILTROS DE GÊNERO --- */
+.gender-filters {
+    animation: fadeIn 0.5s ease;
+}
+
+.gender-btn {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    color: var(--color-text-light);
+    padding: 6px 16px;
+    border-radius: 50px;
+    /* Mais arredondado que o de vídeo */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Hover genérico */
+.gender-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ESTILO FEMININO (ROSA) */
+.gender-btn.btn-female:hover,
+.gender-btn.btn-female.active {
+    border-color: #ff69b4;
+    /* Rosa Choque Suave */
+    background-color: rgba(255, 105, 180, 0.1);
+    color: #ff69b4;
+    font-weight: 700;
+}
+
+/* ESTILO MASCULINO (AZUL) */
+.gender-btn.btn-male:hover,
+.gender-btn.btn-male.active {
+    border-color: #2196f3;
+    /* Azul Material */
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+    font-weight: 700;
+}
+
+/* ESTILO TODOS (Gênero) */
+.gender-btn.active:not(.btn-female):not(.btn-male) {
+    background-color: #eee;
+    color: #333;
+    font-weight: 700;
+    border-color: #ccc;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

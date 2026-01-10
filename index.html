@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-82C88BY1Z8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -157,13 +156,30 @@
 
             <div class="gallery-filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="casamento">Casamentos</button>
                 <button class="filter-btn" data-filter="15anos">15 Anos</button>
-                <button class="filter-btn" data-filter="infantilf">Infantil Meninas</button>
-                <button class="filter-btn" data-filter="infantilm">Infantil Meninos</button>
-                <button class="filter-btn" data-filter="chabebe">Chá de Bebê</button>
+                <button class="filter-btn" data-filter="casamento">Casamentos</button>
                 <button class="filter-btn" data-filter="formatura">Formatura</button>
+
+                <button class="filter-btn" data-filter="adulto">Adulto</button>
+                <button class="filter-btn" data-filter="infantil">Infantil</button>
+
                 <button class="filter-btn" data-filter="tematicos">Temáticos</button>
+            </div>
+
+            <div class="sub-filters gender-filters" id="genderFilters" style="display: none;">
+                <span class="sub-filter-label"><i class="fas fa-venus-mars"></i> Gênero:</span>
+
+                <button class="gender-btn active" data-gender="all">
+                    Todos
+                </button>
+
+                <button class="gender-btn btn-female" data-gender="f">
+                    <i class="fas fa-venus"></i> Feminino
+                </button>
+
+                <button class="gender-btn btn-male" data-gender="m">
+                    <i class="fas fa-mars"></i> Masculino
+                </button>
             </div>
 
             <div class="sub-filters">
@@ -174,11 +190,11 @@
                 </button>
 
                 <button class="sub-filter-btn" data-type="video">
-                    <i class="fas fa-play-circle"></i> Com Movimento
+                    <i class="fas fa-play-circle"></i> Com Vídeo
                 </button>
 
                 <button class="sub-filter-btn" data-type="foto">
-                    <i class="fas fa-camera"></i> Sem Movimento
+                    <i class="fas fa-camera"></i> Sem Vídeo
                 </button>
             </div>
 
@@ -256,7 +272,7 @@
         </div>
     </section>
 
-<section id="authority" class="section-padding">
+    <section id="authority" class="section-padding">
         <div class="container">
 
             <h2 class="section-title">Prêmios & Reconhecimento</h2>
@@ -293,14 +309,16 @@
 
                     <h3>Mulheres em Evidência 2025</h3>
 
-                    <p>Um reconhecimento duplo do talento criativo da Nadia, premiada em primeiro lugar em duas categorias distintas, provando sua versatilidade artística.</p>
+                    <p>Um reconhecimento duplo do talento criativo da Nadia, premiada em primeiro lugar em duas
+                        categorias distintas, provando sua versatilidade artística.</p>
 
                     <ul class="award-roles">
                         <li>• 1ª Colocação: Categoria Escritora</li>
                         <li>• 1ª Colocação: Personalizados para Festas</li>
                     </ul>
 
-                    <p>Dois troféus que celebram a competência tanto na literatura quanto na arte de personalizar sonhos.</p>
+                    <p>Dois troféus que celebram a competência tanto na literatura quanto na arte de personalizar
+                        sonhos.</p>
                 </div>
 
                 <div class="authority-img">
@@ -320,7 +338,8 @@
 
                     <h3>RM Pesquisas & Publicidade</h3>
 
-                    <p>Certificada como referência máxima em qualidade e preferência popular na cidade através de pesquisa de opinião pública.</p>
+                    <p>Certificada como referência máxima em qualidade e preferência popular na cidade através de
+                        pesquisa de opinião pública.</p>
 
                     <ul class="award-roles">
                         <li>• Categoria: Bolos Decorados</li>
@@ -339,7 +358,8 @@
 
                     <h3>Noite de Gala - Destaques do Ano</h3>
 
-                    <p>Registro oficial da cerimônia de premiação que reuniu os maiores destaques empresariais e artísticos da região.</p>
+                    <p>Registro oficial da cerimônia de premiação que reuniu os maiores destaques empresariais e
+                        artísticos da região.</p>
 
                     <ul class="award-roles">
                         <li>• Reconhecimento de Marca</li>
@@ -444,6 +464,13 @@
             </div>
         </div>
     </div>
+
+    <script src="js/bolosInfantilFem.js"></script>
+    <script src="js/bolosInfantilMasc.js"></script>
+    <script src="js/bolos15Anos.js"></script>
+
+    <script src="js/bolosAdultoFem.js"></script>
+    <script src="js/bolosAdultoMasc.js"></script>
 
     <script src="js/dadosBolos.js"></script>
     <script src="js/script.js"></script>

@@ -97,15 +97,20 @@ function initGallery() {
     renderGallery(false);
 }
 
-/* --- 3. FILTRAGEM (ATUALIZADO PARA FILTRO DUPLO) --- */
+/* --- 3. FILTRAGEM AVANÇADA (CATEGORIA + GÊNERO + TIPO) --- */
 const filterBtns = document.querySelectorAll('.filter-btn');
-const subFilterBtns = document.querySelectorAll('.sub-filter-btn'); // Novos botões
+const subFilterBtns = document.querySelectorAll('.sub-filter-btn'); // Foto/Video
+const genderBtns = document.querySelectorAll('.gender-btn'); // Novo: Gênero
+const genderFilterContainer = document.getElementById('genderFilters');
+
 const viewAllBtn = document.getElementById('viewAllBtn');
 const viewLessBtn = document.getElementById('viewLessBtn');
 const emptyState = document.getElementById('emptyState');
 
+// Estados do Filtro
 let currentCategory = 'all';
-let currentType = 'all'; // Nova variável para controlar o tipo (foto/video/all)
+let currentType = 'all';
+let currentGender = 'all';
 const itemsLimit = 6;
 
 function renderGallery(showAll) {
@@ -114,15 +119,39 @@ function renderGallery(showAll) {
     let totalMatching = 0;
 
     galleryItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        const itemType = item.getAttribute('data-type'); // Lê se é 'foto' ou 'video'
+        // Pega os dados do item
+        const itemCategory = item.getAttribute('data-category'); // ex: 'infantilf', 'casamento'
+        const itemType = item.getAttribute('data-type'); // 'foto' ou 'video'
 
-        // A MÁGICA: Verifica se bate com a Categoria E com o Tipo ao mesmo tempo
-        const matchesCategory = (currentCategory === 'all' || itemCategory === currentCategory);
+        // 1. VERIFICAÇÃO DE CATEGORIA (Lógica "Começa com")
+        // Se filtro for 'infantil', ele aceita 'infantilf' e 'infantilm'
+        let matchesCategory = false;
+        if (currentCategory === 'all') {
+            matchesCategory = true;
+        } else {
+            // Verifica se a categoria do item CONTÉM o filtro selecionado
+            // Ex: item 'infantilf' contém o filtro 'infantil'
+            matchesCategory = itemCategory.includes(currentCategory);
+        }
+
+        // 2. VERIFICAÇÃO DE TIPO (Foto/Vídeo)
         const matchesType = (currentType === 'all' || itemType === currentType);
 
-        // Só mostra se passar nos DOIS testes
-        if (matchesCategory && matchesType) {
+        // 3. VERIFICAÇÃO DE GÊNERO (Só importa se estiver visível)
+        let matchesGender = true;
+        if (currentGender !== 'all') {
+            // Se for Feminino ('f'), o item deve terminar com 'f' ou conter 'fem'
+            if (currentGender === 'f') {
+                matchesGender = itemCategory.endsWith('f') || itemCategory.includes('fem');
+            }
+            // Se for Masculino ('m'), o item deve terminar com 'm' ou conter 'masc'
+            else if (currentGender === 'm') {
+                matchesGender = itemCategory.endsWith('m') || itemCategory.includes('masc');
+            }
+        }
+
+        // SÓ MOSTRA SE PASSAR NOS 3 TESTES
+        if (matchesCategory && matchesType && matchesGender) {
             totalMatching++;
             if (showAll || visibleCount < itemsLimit) {
                 item.style.display = 'block';
@@ -135,14 +164,18 @@ function renderGallery(showAll) {
         }
     });
 
-    // Lógica do Empty State (Sem resultados)
+    // Lógica do Empty State e Botões Ver Mais (Mantida igual)
+    updateViewButtons(totalMatching, showAll);
+}
+
+// Helper para esconder/mostrar botões de Ver Mais
+function updateViewButtons(totalMatching, showAll) {
     if (totalMatching === 0) {
         if (emptyState) emptyState.style.display = 'block';
         if (viewAllBtn) viewAllBtn.style.display = 'none';
         if (viewLessBtn) viewLessBtn.style.display = 'none';
     } else {
         if (emptyState) emptyState.style.display = 'none';
-
         if (viewAllBtn && viewLessBtn) {
             if (totalMatching <= itemsLimit) {
                 viewAllBtn.style.display = 'none';
@@ -160,22 +193,50 @@ function renderGallery(showAll) {
     }
 }
 
-// Eventos dos Botões de Categoria (Grandes)
+// --- EVENTOS DE CLIQUE ---
+
+// 1. Botões de Categoria Principal
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+        // Atualiza visual ativo
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
+        // Define categoria
         currentCategory = btn.getAttribute('data-filter');
+
+        // LÓGICA DO FILTRO DE GÊNERO:
+        // Só aparece se for 'infantil' ou 'adulto'
+        if (currentCategory === 'infantil' || currentCategory === 'adulto') {
+            genderFilterContainer.style.display = 'flex';
+        } else {
+            genderFilterContainer.style.display = 'none';
+            // Reseta o gênero para 'all' se mudar de categoria
+            currentGender = 'all';
+            genderBtns.forEach(b => b.classList.remove('active'));
+            genderBtns[0].classList.add('active'); // Ativa o botão "Todos" do gênero
+        }
+
         renderGallery(false);
     });
 });
 
-// Eventos dos Botões de Tipo (Pequenos - Com/Sem Movimento)
+// 2. Botões de Gênero (Rosa/Azul)
+genderBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        genderBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentGender = btn.getAttribute('data-gender');
+        renderGallery(false);
+    });
+});
+
+// 3. Botões de Tipo (Foto/Vídeo)
 subFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         subFilterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        currentType = btn.getAttribute('data-type'); // Atualiza a variável de tipo
+        currentType = btn.getAttribute('data-type');
         renderGallery(false);
     });
 });
@@ -256,15 +317,17 @@ function openModal(id) {
         }, 100);
     }
 
-    // --- 4.2 PREPARA AS MÍDIAS (SLIDESHOW HÍBRIDO) ---
+    // --- 4.2 PREPARA AS MÍDIAS (SLIDESHOW HÍBRIDO - ORDEM CORRIGIDA) ---
     currentBoloSlides = [];
     const isDesktop = window.innerWidth > 768;
 
-    // 1. IMAGEM (Invertido: Detail primeiro, depois Fitted)
+    // 1. IMAGEM PRINCIPAL
+    // Agora: Fitted (Inteira) PRIMEIRO, depois Detail (Rolagem)
+    currentBoloSlides.push({ type: 'image', src: data.imagemPrincipal }); // 1º Fitted (Trava a tela)
+
     if (isDesktop) {
-        currentBoloSlides.push({ type: 'image-detail', src: data.imagemPrincipal }); // 1º Detail (Rola a tela)
+        currentBoloSlides.push({ type: 'image-detail', src: data.imagemPrincipal }); // 2º Detail (Rola a tela)
     }
-    currentBoloSlides.push({ type: 'image', src: data.imagemPrincipal }); // 2º Fitted (Trava a tela)
 
     // 2. EXTRAS
     if (data.imagensExtras && data.imagensExtras.length > 0) {
@@ -274,16 +337,16 @@ function openModal(id) {
     // 3. VÍDEO
     if (data.tipo === 'video' && data.videoSrc) {
         if (isDesktop) {
-            // 1. O Vídeo "Detail" (PRIMEIRO agora)
+            // 1. O Vídeo "Fitted" (PRIMEIRO agora) - Trava a tela
             currentBoloSlides.push({
-                type: 'video-detail',
+                type: 'video-fitted',
                 src: data.videoSrc,
                 poster: data.imagemPrincipal
             });
 
-            // 2. O Vídeo "Fitted" (DEPOIS agora)
+            // 2. O Vídeo "Detail" (DEPOIS agora) - Rola a tela
             currentBoloSlides.push({
-                type: 'video-fitted',
+                type: 'video-detail',
                 src: data.videoSrc,
                 poster: data.imagemPrincipal
             });
