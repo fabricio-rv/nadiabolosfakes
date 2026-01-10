@@ -6,5 +6,7 @@ const dadosBolos = [
     ...listaInfantilMasc,  // <--- VOCÊ PRECISA ADICIONAR ESTA LINHA AQUI
     ...lista15Anos,        // Outras listas...
     ...listaAdultoFem,
-    ...listaAdultoMasc
+    ...listaAdultoMasc,
+    ...listaFormaturas,
+    ...listaCasamentos,
 ];

@@ -51,7 +51,7 @@ function initGallery() {
     galleryGrid.innerHTML = dadosBolos.map(bolo => {
         const mediaHtml = bolo.tipo === 'video'
             ? `<video src="${bolo.videoSrc}" poster="${bolo.imagemPrincipal}" muted loop playsinline></video>
-               <div class="motion-badge"><i class="fas fa-play"></i> Com Movimento</div>`
+               <div class="motion-badge"><i class="fas fa-play"></i> Com Vídeo</div>`
             : `<img src="${bolo.imagemPrincipal}" alt="${bolo.titulo}">`;
 
         return `
@@ -79,7 +79,7 @@ function initGallery() {
 
         const mediaHtml = bolo.tipo === 'video'
             ? `<video src="${bolo.videoSrc}" poster="${bolo.imagemPrincipal}" muted loop playsinline></video>
-               <div class="motion-badge"><i class="fas fa-play"></i> Com Movimento</div>`
+               <div class="motion-badge"><i class="fas fa-play"></i> Com Vídeo</div>`
             : `<img src="${bolo.imagemPrincipal}" alt="${bolo.titulo}">`;
 
         // Note que agora usamos ${tipoItem} no data-type
