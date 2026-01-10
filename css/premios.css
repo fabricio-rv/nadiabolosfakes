@@ -1,4 +1,4 @@
-/* --- PRÊMIOS --- */
+/* --- PRÊMIOS (CORRIGIDO: SOMBRA BEGE NO MODO CLARO) --- */
 #authority {
     background-color: var(--color-bg-white);
 }
@@ -23,8 +23,10 @@
 .authority-img img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 20px 20px 0 #ffffff;
-    /* Sombra branca padrão */
+
+    /* AQUI ESTÁ A MUDANÇA: Usa a variável bege do site (#F5F5DC) */
+    box-shadow: 20px 20px 0 var(--color-bg-alt);
+
     transition: transform 0.3s;
 }
 
@@ -32,7 +34,7 @@
     transform: scale(1.02);
 }
 
-/* Ajuste Sombra Imagem Dark Mode */
+/* Ajuste Sombra Imagem Dark Mode (Mantido original transparente) */
 [data-theme="dark"] .authority-img img {
     box-shadow: 20px 20px 0 rgba(255, 255, 255, 0.05);
 }

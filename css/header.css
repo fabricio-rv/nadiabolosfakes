@@ -173,9 +173,9 @@ header {
 
     /* --- BOTÃO TEMA (Aumentado) --- */
     .theme-btn {
-        width: 31px;
-        height: 31px;
-        font-size: 0.9rem;
+        width: 34px;
+        height: 34px;
+        font-size: 1.0rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -185,34 +185,56 @@ header {
 
 @media (max-width: 768px) {
 
-    /* --- BOTÃO ORÇAMENTO (MANTIDO) --- */
-    .header-cta.desktop-cta {
-        display: flex !important;
-        padding: 6px 11px !important;
-        font-size: 0.95rem !important;
-        gap: 5px !important;
-        margin-left: 0 !important;
-        border-radius: 50px;
-        white-space: nowrap;
+    /* --- 1. GARANTIA DE ESTRUTURA (Blindagem) --- */
+    .nav-container {
+        /* Garante que os itens fiquem na mesma linha sempre */
+        flex-wrap: nowrap !important;
     }
 
-    /* --- ÍCONE HAMBÚRGUER (CORRIGIDO) --- */
+    /* Se a tela for minúscula, o logo encolhe para dar espaço ao menu */
+    .logo {
+        flex-shrink: 1;
+        min-width: 0;
+        /* Permite encolher o texto se necessário */
+    }
+
+    /* --- 2. REMOVE O BOTÃO ORÇAMENTO --- */
+    .header-cta.desktop-cta {
+        display: none !important;
+    }
+
+    /* --- 3. POSICIONAMENTO DOS ÍCONES (Lua + Hambúrguer) --- */
+    .header-actions {
+        display: flex !important;
+        align-items: center !important;
+
+        /* Joga tudo para a direita */
+        margin-left: auto !important;
+
+        /* ORDEM SUPREMA: Proíbe o navegador de esconder ou esmagar isso */
+        flex-shrink: 0 !important;
+
+        /* Espaço fixo e seguro entre a Lua e o Hambúrguer */
+        gap: 60px !important;
+
+        /* Distância da borda direita da tela (para não ficar colado) */
+        padding-right: 20px !important;
+    }
+
+    /* --- 4. ÍCONE HAMBÚRGUER --- */
     .hamburger {
         display: block !important;
-
-        /* VOLTEI PARA RELATIVE: Isso impede que ele role com a tela fechado */
-        /* E garante que o gap (espaçamento) funcione */
         position: relative;
-
-        /* Margem de segurança caso o gap do pai não pegue */
-        margin-left: 1px;
-
+        margin-left: 0 !important;
         z-index: 2002;
-        font-size: 1.8rem;
+        font-size: 2.0rem;
         color: var(--color-text-main);
+        /* Garante que o ícone tenha tamanho fixo */
+        width: auto;
+        height: auto;
     }
 
-    /* --- MENU LATERAL (SIDEBAR) --- */
+    /* --- MENU LATERAL (MANTIDO IGUAL) --- */
     .nav-links {
         position: fixed;
         top: 0;
@@ -227,8 +249,6 @@ header {
 
         display: flex;
         flex-direction: column;
-
-        /* Alinhamento da coluna */
         align-items: center;
         justify-content: flex-start;
         padding-top: 90px;
@@ -240,7 +260,6 @@ header {
         z-index: 1500;
     }
 
-    /* Dark Mode */
     [data-theme="dark"] .nav-links {
         background-color: rgba(18, 18, 18, 0.95);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
@@ -250,15 +269,10 @@ header {
         transform: translateX(0%);
     }
 
-    /* ESTILO DAS LINHAS E ITENS (CORRIGIDO PARA CENTRALIZAR) */
     .nav-links li {
         width: 85%;
-
-        /* IMPORTANTE: Display block anula o flex do desktop que puxava pra esquerda */
         display: block;
         text-align: center;
-        /* Agora isso vai funcionar */
-
         padding: 0;
         border-bottom: 1px solid rgba(212, 175, 55, 0.6);
     }
@@ -273,9 +287,7 @@ header {
 
     .nav-links a {
         display: block;
-        /* Garante que o link ocupe a largura toda */
         text-align: center;
-        /* Reforço da centralização */
         padding: 22px 0;
         font-size: 1.1rem;
         font-weight: 500;
@@ -287,7 +299,7 @@ header {
         display: none;
     }
 
-    /* --- BOTÃO EXTRA MOBILE --- */
+    /* Botão verde DENTRO do menu */
     .mobile-orcamento {
         display: block;
         margin-top: 30px;

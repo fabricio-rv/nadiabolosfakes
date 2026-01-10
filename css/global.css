@@ -56,6 +56,33 @@
     --shadow-text: none;
 }
 
+/* --- CORREÇÃO SCROLLBAR (BARRA PRETA) --- */
+/* Isso força a barra de rolagem a ser clara, evitando o fundo preto */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    /* Fundo do trilho branco */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 6px;
+    border: 3px solid #ffffff;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #121212;
+    /* Fundo escuro no modo Dark */
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border: 3px solid #121212;
+}
+
 /* --- RESET & BASICS --- */
 * {
     margin: 0;
@@ -125,6 +152,7 @@ img {
 /* --- HERO SECTION --- */
 #hero {
     height: 90vh;
+    /* Altura padrão (Mobile e telas menores) */
     background: linear-gradient(to bottom,
             rgba(0, 0, 0, 0.3) 0%,
             rgba(0, 0, 0, 0.6) 50%,
@@ -249,6 +277,8 @@ img {
     background-color: #1ebe57;
 }
 
+/* --- RESPONSIVIDADE & AJUSTES --- */
+
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 2.2rem;
@@ -270,5 +300,39 @@ img {
 
     .seal-number {
         font-size: 2rem;
+    }
+}
+
+/* --- CORREÇÃO FINAL PARA IMAGEM 1920x1250 --- */
+@media (min-width: 1024px) {
+    #hero {
+        /* A MÁGICA: Altura baseada na proporção da imagem (65% da largura) */
+        /* Assim a foto cresce e diminui proporcionalmente sem cortar nada */
+        height: 65vw !important;
+        
+        /* Segurança: não deixa ficar menor que 600px em notebooks pequenos */
+        min-height: 600px !important; 
+
+        /* Garante o enquadramento */
+        background-position: center top !important;
+        background-size: cover !important;
+        
+        /* Opcional: Removemos a largura fixa para ela encher a tela toda */
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+    /* 2. ESPAÇAMENTOS MAIORES (SÓ PARA PC) */
+    .hero-content h1 {
+        margin-bottom: 35px; /* Mais espaço no título */
+    }
+
+    .hero-content p {
+        margin-bottom: 50px; /* Mais espaço no texto/botão */
+    }
+
+    .seal-container {
+        margin-top: 60px; /* Mais espaço no selo */
     }
 }
