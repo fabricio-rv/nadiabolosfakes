@@ -37,7 +37,16 @@ footer {
     margin: 8px auto 0;
 }
 
-.footer-col p,
+/* --- APAGUE TUDO ISSO DAQUI --- */
+/* --- NOVO: Regra para "espremer" o texto e quebrar as linhas --- */
+.footer-col p {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
+}
+/* ------------------------------- */
+
 .footer-col a {
     margin-bottom: 12px;
     color: var(--color-text-footer) !important;
@@ -57,6 +66,13 @@ footer {
     display: flex;
     gap: 15px;
     justify-content: center;
+}
+
+/* ADICIONE ESTE BLOCO PARA O LINKTREE */
+.social-icons a[aria-label="Linktree"] {
+    background-color: #ffffff !important;
+    color: #43E660 !important;
+    /* Verde do Linktree */
 }
 
 .social-icons a {
@@ -131,5 +147,35 @@ footer {
 
     .social-icons {
         justify-content: center;
+    }
+}
+/* Isso esconde a quebra de linha no Computador (O SEGREDO ESTÁ AQUI) */
+br.quebra-mobile {
+    display: none; 
+}
+
+/* Regras apenas para Celular */
+@media (max-width: 768px) {
+    .footer-content {
+        text-align: center;
+        gap: 50px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    /* Agora sim: só espreme o texto se for celular */
+    .footer-col p {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 10px;
+    }
+
+    /* Ativa a quebra de linha forçada no celular */
+    br.quebra-mobile {
+        display: block;
+        margin-bottom: 5px;
     }
 }
