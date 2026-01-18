@@ -1,0 +1,371 @@
+/* =========================================
+   GALERIA.CSS - VERSÃO FINAL (CLEAN)
+   ========================================= */
+
+/* --- CONFIGURAÇÃO GERAL DA SEÇÃO --- */
+#gallery {
+    background-color: var(--color-bg-white);
+    padding-top: 60px !important;
+}
+
+#gallery .section-title {
+    margin-bottom: 20px !important;
+    /* Espaço ajustado para o título novo */
+}
+
+#gallery .section-title::after {
+    margin-top: 20px !important;
+}
+
+/* --- TÍTULOS E LABELS --- */
+
+/* 1. Título Principal (OCASIÕES) */
+.sub-filter-label.main-label {
+    display: block;
+    font-size: 1.6rem;
+    /* Bem visível */
+    color: var(--color-accent-gold);
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Adicione isso para controlar a distância da Estrela */
+.sub-filter-label.main-label i {
+    margin-right: -3px;
+    /* Ajuste esse número. Quanto menor, mais perto fica. */
+}
+
+/* 2. Títulos dos Sub-Filtros (Gênero, Tamanho, etc) */
+.sub-filter-label {
+    display: block;
+    font-size: 1.4rem;
+    /* Tamanho médio legível */
+    color: var(--color-text-main);
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- FILTROS PRINCIPAIS (CATEGORIAS) --- */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    /* Espaço até o próximo filtro */
+}
+
+/* --- BOTÕES DE CATEGORIA (15 Anos, Casamento...) - AUMENTADOS --- */
+.filter-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: var(--color-text-main);
+    /* MUDANÇAS AQUI: Botão maior e letra mais forte */
+    padding: 8px 26px;
+    /* Mais "gordinho" (antes era 8px 24px) */
+    font-size: 1.0rem;
+    /* Letra maior */
+    font-weight: 700;
+    /* Negrito para destacar */
+    letter-spacing: 0.5px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--color-accent-gold);
+    border-color: var(--color-accent-gold);
+    color: white;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* --- SUB-FILTROS (GRUPOS) --- */
+.sub-filters-group {
+    margin-bottom: 25px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    padding: 0 10px;
+}
+
+/* Área de Rolagem Horizontal (Mobile) */
+.scroll-filters {
+    display: flex;
+    justify-content: center;
+    /* Centralizado no Desktop */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* AJUSTE MOBILE: Centralizado e com Rolagem */
+@media (max-width: 1150px) {
+    .scroll-filters {
+        justify-content: center;
+        /* Centralizado como você pediu */
+        overflow-x: auto;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .scroll-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Impede botões de amassarem */
+    .tier-btn,
+    .theme-btn-filter,
+    .sub-filter-btn,
+    .gender-btn {
+        flex-shrink: 0;
+    }
+}
+
+/* --- ESTILO UNIFICADO DOS BOTÕES SECUNDÁRIOS --- */
+.tier-btn,
+.theme-btn-filter,
+.sub-filter-btn,
+.gender-btn {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    color: var(--color-text-main);
+    /* Texto mais suave */
+    padding: 7px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.0rem;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700 !important;
+}
+
+.tier-btn i,
+.sub-filter-btn i,
+.gender-btn i {
+    font-size: 0.85rem;
+}
+
+/* --- ESTADOS ATIVOS (CORES) --- */
+
+/* Padrão Dourado */
+.tier-btn.active,
+.theme-btn-filter.active,
+.sub-filter-btn.active,
+.gender-btn.active, /* Esta linha garante o dourado no botão Todos, Masculino e Feminino */
+.filter-btn.active 
+.tier-btn:hover,
+.tier-btn.active,
+.theme-btn-filter:hover,
+.theme-btn-filter.active,
+.sub-filter-btn:hover,
+.sub-filter-btn.active,
+.gender-btn:hover {
+    background-color: var(--color-accent-gold);
+    border-color: var(--color-accent-gold);
+    color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Gênero Feminino (Rosa) */
+.gender-btn.btn-female.active {
+    background-color: #ff69b4 !important;
+    border-color: #ff69b4 !important;
+    color: white !important;
+}
+
+/* Gênero Masculino (Azul) */
+.gender-btn.btn-male.active {
+    background-color: #2196f3 !important;
+    border-color: #2196f3 !important;
+    color: white !important;
+}
+
+/* --- GRID DE FOTOS --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+
+    /* ESPAÇAMENTO AUMENTADO DO FILTRO PARA AS FOTOS */
+    margin-top: 50px;
+}
+
+/* Item da Galeria */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 780px;
+    /* Altura fixa Desktop */
+    background-color: var(--color-bg-card);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.05);
+}
+
+/* Badge de Vídeo */
+.motion-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 5;
+}
+
+/* Overlay (Texto sobre a foto) */
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 5;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h3{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.gallery-overlay p {
+    color: white !important;
+}
+
+/* --- AJUSTES MOBILE (GRID E ITENS) --- */
+@media (max-width: 1150px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        margin-top: 35px;
+        /* Espaço um pouco menor no mobile */
+    }
+
+    .gallery-item {
+        height: auto !important;
+        background-color: transparent !important;
+        margin-bottom: 15px;
+        border: none;
+    }
+
+    .gallery-item img,
+    .gallery-item video {
+        height: auto !important;
+        position: relative !important;
+    }
+}
+
+/* --- EMPTY STATE & CTA --- */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--color-bg-card);
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px dashed var(--color-accent-gold);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    margin-bottom: 30px;
+}
+
+.view-all-container {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#viewAllBtn,
+#viewLessBtn {
+    display: none;
+}
+
+.persistent-cta {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 30px;
+}
+
+[data-theme="dark"] .persistent-cta {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.persistent-cta p {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.persistent-cta p strong {
+    color: var(--color-accent-gold);
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

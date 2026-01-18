@@ -1,0 +1,141 @@
+/* --- LOGÍSTICA --- */
+#logistics {
+    background-color: var(--color-bg-alt);
+}
+
+.route-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.route-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+
+.route-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--color-accent-gold);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.route-step p {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.arrow-divider {
+    color: #ccc;
+    font-size: 1.5rem;
+}
+
+/* Footer da Logística */
+.logistics-footer {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.extra-cities {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.btn-whatsapp-logistics {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-whatsapp-logistics:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    background-color: #1ebe57;
+    color: white;
+}
+
+.btn-whatsapp-logistics i {
+    font-size: 1.3rem;
+}
+
+/* Logística Responsiva */
+@media (max-width: 768px) {
+    .route-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .route-step {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: var(--color-bg-card);
+        padding: 15px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        width: 85%;
+        max-width: 320px;
+        margin: 0 auto;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .route-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-bottom: 0;
+        margin-right: 15px;
+        background-color: rgba(212, 175, 55, 0.1);
+        color: var(--color-accent-gold);
+    }
+
+    .route-step p {
+        font-size: 1rem;
+        margin: 0;
+        text-align: left;
+        color: var(--color-text-main);
+    }
+
+    .arrow-divider {
+        transform: rotate(90deg);
+        margin: 8px 0;
+        opacity: 0.6;
+    }
+
+    .logistics-footer {
+        margin-top: 30px;
+    }
+
+    .btn-whatsapp-logistics {
+        font-size: 0.9rem;
+        padding: 12px 20px;
+        width: 90%;
+        justify-content: center;
+    }
+}
