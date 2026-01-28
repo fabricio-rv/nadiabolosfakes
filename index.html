@@ -2,115 +2,143 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-82C88BY1Z8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+  <!-- Básico -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadia Bolos Cenográficos</title>
 
-        gtag('config', 'G-82C88BY1Z8');
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Indexação -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
-    <title>Nadia Bolos Cenográficos</title>
+  <!-- Canonical (sempre com barra final se teu site abre com barra final) -->
+  <link rel="canonical" href="https://nadiaboloscenograficos.com.br/" />
 
-    <meta name="description"
-        content="Nadia Bolos Cenográficos: Aluguel de bolos cenográficos e maquetes de luxo em toda Região Sul. A arte exclusiva de Nadia Borges em bolos motorizados para casamentos, 15 anos e muito mais.">
+  <!-- SEO -->
+  <meta
+    name="description"
+    content="Nadia Bolos Cenográficos: aluguel de bolos cenográficos (bolo fake) e maquetes de luxo com acabamento realista e opções motorizadas. Atendemos Porto Alegre e todo RS."
+  />
+  <meta
+    name="keywords"
+    content="Nadia Bolos Cenográficos, bolo cenográfico, bolo fake, maquete de bolo, aluguel de bolo fake, bolo de casamento, bolo 15 anos, bolo infantil, bolo motorizado, Porto Alegre, Rio Grande do Sul"
+  />
+  <meta name="author" content="Nadia Borges de Vargas" />
+  <meta name="theme-color" content="#d4af37" />
 
-    <meta name="keywords"
-        content="Nadia, Nadia Borges, Nadia Borges de Vargas, Bolos Cenográficos, Bolo Fake, Maquete de Bolo, Bolo de Isopor, Bolo Decorativo, Nadia Bolo Fake, Aluguel de Bolo, Locação de Bolos, Bolos de Casamento, Bolos de 15 Anos, Bolos Infantis, Bolo Motorizado, Bolo com Movimento, Bolo de Biscuit, Decoração de Festas, Amaral Ferrador, Camaquã, Porto Alegre, Cristal, Região Sul RS, Festas de Luxo">
+  <!-- Open Graph -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nadia Bolos Cenográficos" />
+  <meta property="og:title" content="Nadia Bolos Cenográficos | A Arte de Celebrar" />
+  <meta
+    property="og:description"
+    content="Bolos cenográficos (bolo fake) e maquetes de luxo com acabamento realista e opções motorizadas. Veja a coleção e peça orçamento."
+  />
+  <meta property="og:url" content="https://nadiaboloscenograficos.com.br/" />
+  <meta property="og:image" content="https://nadiaboloscenograficos.com.br/imagens/fundo_site.jpg" />
+  <meta property="og:image:secure_url" content="https://nadiaboloscenograficos.com.br/imagens/fundo_site.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nadia Bolos Cenográficos - bolos cenográficos e maquetes de luxo" />
 
-    <meta name="author" content="Nadia Borges de Vargas | Nadia Bolos Cenográficos">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nadia Bolos Cenográficos | A Arte de Celebrar" />
+  <meta
+    name="twitter:description"
+    content="Bolos cenográficos (bolo fake) e maquetes de luxo com acabamento realista e opções motorizadas. Atendemos Porto Alegre e todo RS."
+  />
+  <meta name="twitter:image" content="https://nadiaboloscenograficos.com.br/imagens/fundo_site.jpg" />
 
-    <meta name="robots" content="index, follow">
+  <!-- Ícones (recomendado: ter os tamanhos clássicos; se não tiver, remove os que não existem) -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="imagens/n.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="imagens/n.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="imagens/n.png" />
 
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Nadia Bolos Cenográficos | A Arte de Celebrar">
-    <meta property="og:description"
-        content="Transforme sua festa com bolos cenográficos motorizados e exclusivos. Veja nossa coleção!">
-    <meta property="og:url" content="https://nadiaboloscenograficos.com.br">
-    <meta property="og:site_name" content="Nadia Bolos Cenográficos">
+  <!-- (Opcional) PWA se tu tiver o arquivo -->
+  <link rel="manifest" href="/site.webmanifest" />
 
-    <meta property="og:image" content="https://nadiaboloscenograficos.com.br/imagens/fundo_site.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+  <!-- Fonts (otimizado) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nadia Bolos Cenográficos | A Arte de Celebrar">
-    <meta name="twitter:image" content="https://nadiaboloscenograficos.com.br/imagens/fundo_site.jpg">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/botoes.css" />
+  <link rel="stylesheet" href="css/galeria.css" />
+  <link rel="stylesheet" href="css/logistica.css" />
+  <link rel="stylesheet" href="css/premios.css" />
+  <link rel="stylesheet" href="css/sobre.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/modais.css" />
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="/imagens/n.png" sizes="512x512">
-    <link rel="apple-touch-icon" href="/imagens/n.png" sizes="512x512">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82C88BY1Z8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-82C88BY1Z8');
+  </script>
 
-    <meta name="theme-color" content="#d4af37">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/botoes.css">
-    <link rel="stylesheet" href="css/galeria.css">
-    <link rel="stylesheet" href="css/logistica.css">
-    <link rel="stylesheet" href="css/premios.css">
-    <link rel="stylesheet" href="css/sobre.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/modais.css">
-
-    <link rel="canonical" href="https://nadiaboloscenograficos.com.br/">
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "LocalBusiness",
-  "name": "Nadia Bolos Cenográficos",
-  "url": "https://nadiaboloscenograficos.com.br/",
-  "logo": "https://nadiaboloscenograficos.com.br/imagens/n.png",
-  "image": [
-    "https://nadiaboloscenograficos.com.br/imagens/15%20anos/15anos1.jpg"
-  ],
-  "telephone": "+5551999973725",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua Rivadavia Correa Costa, 455",
-    "addressLocality": "Amaral Ferrador",
-    "addressRegion": "RS",
-    "postalCode": "96635-000",
-    "addressCountry": "BR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -30.8767,
-    "longitude": -52.2533
-  },
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": "Rio Grande do Sul"
-  },
-  "contactPoint": [{
-    "@type": "ContactPoint",
+  <!-- Schema.org (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://nadiaboloscenograficos.com.br/#localbusiness",
+    "name": "Nadia Bolos Cenográficos",
+    "url": "https://nadiaboloscenograficos.com.br/",
+    "description": "Aluguel de bolos cenográficos (bolo fake) e maquetes de luxo com acabamento realista e opções motorizadas. Atendimento no RS.",
     "telephone": "+5551999973725",
-    "contactType": "sales",
-    "availableLanguage": ["pt-BR"]
-  }],
-  "sameAs": [
-    "https://www.instagram.com/nadyabolofake",
-    "https://www.facebook.com/nadyaforminhas.forminhas"
-  ]
-}
-</script>
-
+    "priceRange": "$$",
+    "logo": "https://nadiaboloscenograficos.com.br/imagens/n.png",
+    "image": [
+      "https://nadiaboloscenograficos.com.br/imagens/fundo_site.jpg",
+      "https://nadiaboloscenograficos.com.br/imagens/15%20anos/15anos1.jpg"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Rivadavia Correa Costa, 455",
+      "addressLocality": "Amaral Ferrador",
+      "addressRegion": "RS",
+      "postalCode": "96635-000",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -30.8767,
+      "longitude": -52.2533
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Rio Grande do Sul" },
+      { "@type": "City", "name": "Porto Alegre" }
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+5551999973725",
+      "contactType": "sales",
+      "availableLanguage": ["pt-BR"]
+    }],
+    "sameAs": [
+      "https://www.instagram.com/nadyabolofake",
+      "https://www.facebook.com/nadyaforminhas.forminhas"
+    ]
+  }
+  </script>
 </head>
+
 
 <body>
 
